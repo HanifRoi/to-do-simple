@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\UserServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -189,6 +190,7 @@ return [
         /*
          * Application Service Providers...
          */
+        UserServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
