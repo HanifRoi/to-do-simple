@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\TodolistServiceProvider;
 use App\Providers\UserServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
@@ -190,6 +191,7 @@ return [
         /*
          * Application Service Providers...
          */
+        TodolistServiceProvider::class,
         UserServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
