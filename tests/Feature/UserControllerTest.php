@@ -60,4 +60,10 @@ public function testLoginForUserAlreadyLogin()
         ])->assertRedirect('/');
     }
 
+    public function testLogoutGuest()
+    {
+        $this->post('logout')
+        ->assertRedirect('/');
+    }
+
 }
