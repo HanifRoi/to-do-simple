@@ -35,6 +35,14 @@ class UserControllerTest extends TestCase
         ])->assertSeeText('User Atau Password salah');
     }
 
+    public function testLogout()
+    {
+        $this->withSession([
+            "user"=>"roihan",
+        ])->post('/logout')->assertRedirect("/")
+            ->assertSessionMissing("user");
+    }
+
 
 
 }
