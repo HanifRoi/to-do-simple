@@ -3,6 +3,7 @@ namespace App\Services\Implement;
 
 use App\Services\TodolistService;
 use Illuminate\Support\Facades\Session;
+use Override;
 
 class TodolistServiceImpl implements TodolistService
 {
@@ -22,6 +23,20 @@ class TodolistServiceImpl implements TodolistService
     public function getTodolist(): array
     {
         return Session::get("todolist", []);
+    }
+
+    #[Override]
+    public function removeTodolist(string $todoId)
+    {
+        $todolist = Session::get("todolist");
+        foreach($todolist as $index=>$value){
+            if($value['id'] == $todoId){
+                unset($todolist[$index]);
+                break;
+            }
+        }
+
+        Session::put("todolist", $todolist);
     }
     
 }
