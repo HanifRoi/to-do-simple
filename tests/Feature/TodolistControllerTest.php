@@ -40,7 +40,7 @@ class TodolistControllerTest extends TestCase
         $this->withSession([
             'user'=>'roihan'
         ])->post('/todolist', [])
-            ->assertSeeText('Todo is required');
+            ->assertSeeText('Todo is Required');
     }
 
      public function testAddTodolistSuccess()
@@ -50,5 +50,21 @@ class TodolistControllerTest extends TestCase
         ])->post('/todolist', [
             'todo'=>'halo'
         ])->assertRedirect('/todolist');
+    }
+
+    public function testRemoveTodolist()
+    {
+        $this->withSession([
+            'user'=>'roihan',
+            'todolist' => [
+                [
+                    'id'=>'1',
+                    'todo'=>'halo'
+                ],[
+                    'id'=>'2',
+                    'todo'=>'halolagi'
+                ]
+            ]
+        ])->post('/todolist/1/delete')->assertRedirect('/todolist');
     }
 }
