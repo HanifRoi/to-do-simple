@@ -17,5 +17,11 @@ class TodolistServiceImpl implements TodolistService
             "todo" => $todo
         ]);
     }
+
+
+    public function getTodolist(): array
+    {
+        return Session::get("todolist", []);
+    }
     
 }
