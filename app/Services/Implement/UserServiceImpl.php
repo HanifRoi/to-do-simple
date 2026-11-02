@@ -9,7 +9,7 @@ class UserServiceImpl implements UserService
 
 	function login(string $email, string $password): bool
 	{
-		Auth::attempt([
+		return Auth::attempt([
 			'email' => $email,
 			'password'=>$password
 		]);
